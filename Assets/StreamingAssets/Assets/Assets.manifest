@@ -1,0 +1,28 @@
+ManifestFileVersion: 0
+CRC: 348667731
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: bedroom1.p3d
+      Dependencies: {}
+    Info_1:
+      Name: bedroom2.p3d
+      Dependencies: {}
+    Info_2:
+      Name: bedroom3.p3d
+      Dependencies: {}
+    Info_3:
+      Name: kitchen.p3d
+      Dependencies: {}
+    Info_4:
+      Name: hall.p3d
+      Dependencies: {}
+    Info_5:
+      Name: living_room.p3d
+      Dependencies: {}
+    Info_6:
+      Name: toilet.p3d
+      Dependencies: {}
+    Info_7:
+      Name: bath.p3d
+      Dependencies: {}
