@@ -42,10 +42,12 @@ public class SuckScript : MonoBehaviour
 
 
                 // hit.collider.gameObject.transform.position = Vector3.MoveTowards(object_pos, cam_pos, step);
+
+                // add force to the rigidbody towards player
                 hit.collider.gameObject.GetComponent<Rigidbody>().AddForce((cam_pos- object_pos));
 
 
-               // print("object postion is :  " + object_pos);
+               //print("object postion is :  " + object_pos);
                //print("camera postion is :  " + cam_pos);
                //print("-------------------------------------------------");
             }
