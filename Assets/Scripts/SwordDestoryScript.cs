@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using DG.Tweening;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -21,8 +22,11 @@ public class SwordDestoryScript : MonoBehaviour
 
         if (Col.gameObject.CompareTag("destoryable"))
         {
-            print("插中啦！！！！");
-            Col.gameObject.SetActive(false);
+
+           // Col.gameObject.gameObject.layer = 0;
+            Col.gameObject.transform.DOShakePosition(3f, 0.3f, 10, 20);
+            Destroy(Col.gameObject, 1.5f);
+            //print(Col.gameObject);
         }
     }
 }

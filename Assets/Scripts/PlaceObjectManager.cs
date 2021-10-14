@@ -59,6 +59,8 @@ public Light lt;
 public Vector3 HitVector;
 public float angleX, angleY;
 public bool isRed = true;
+public bool canRed = false;
+public bool canBlue = false;
 void Start()
 {
         cam = GameObject.FindGameObjectWithTag("MainCamera");
@@ -73,13 +75,13 @@ void Update()
         }
         if (Input.GetButton("RB"))
         {
-            if (isRed)
+            if (isRed&&canRed)
             {
                 lt.color = Color.red;
             }
-            else
+            else if(!isRed&&canBlue)
             {
-                lt.color = Color.blue;
+                lt.color = Color.cyan;
             }
         }
 
@@ -90,7 +92,7 @@ void Update()
         }
 
         // mouse left
-        if (Input.GetButtonUp("RB")&&isRed)
+        if (Input.GetButtonUp("RB")&&isRed&&canRed)
         {
                 Vector3 pos = new Vector3(0, 0, 0);
                 pos = HitPoint();
@@ -148,12 +150,16 @@ void Update()
                         }
                         // curTp1.transform.position = pos + new Vector3(0, 3, 0);
                 }
-
+            
             isRed = false;
+            if (canRed && !canBlue)
+            {
+                isRed = true;
+            }
                 return;
         }
 
-        if (Input.GetButtonUp("RB")&&!isRed)
+        if (Input.GetButtonUp("RB")&&!isRed&&canBlue)
         {
                 Vector3 pos = new Vector3(0, 0, 0);
                 pos = HitPoint();

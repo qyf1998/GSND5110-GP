@@ -6,7 +6,7 @@ public class SuckScript : MonoBehaviour
 {
 
 
-    public GameObject cam, suck;
+    public GameObject cam, suck,PlayerLight;
     public LayerMask SuckLayer;
 
     Vector3 object_pos, cam_pos;
@@ -20,17 +20,20 @@ public class SuckScript : MonoBehaviour
     void Start()
     {
         cam = GameObject.FindGameObjectWithTag("MainCamera");
-        suck.SetActive(false);
+       // suck.SetActive(false);
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        suck.SetActive(false);
+        //suck.SetActive(false);
         if (Input.GetAxis("LT") != 0)
         {
-            suck.SetActive(true);
+            // suck.SetActive(true
+            
+            PlayerLight.GetComponent<Light>().spotAngle -= 20*Time.deltaTime;
+            PlayerLight.GetComponent<Light>().color = Color.white ;
             float step = speed * Time.deltaTime;
             cam_pos = cam.transform.position;
             if (Physics.Raycast(cam_pos, cam.transform.forward, out hit, 100f, SuckLayer))
@@ -44,7 +47,7 @@ public class SuckScript : MonoBehaviour
                 // hit.collider.gameObject.transform.position = Vector3.MoveTowards(object_pos, cam_pos, step);
 
                 // add force to the rigidbody towards player
-                hit.collider.gameObject.GetComponent<Rigidbody>().AddForce((cam_pos- object_pos));
+                hit.collider.gameObject.GetComponent<Rigidbody>().AddForce((cam_pos- object_pos)*10);
 
 
                //print("object postion is :  " + object_pos);
@@ -52,16 +55,23 @@ public class SuckScript : MonoBehaviour
                //print("-------------------------------------------------");
             }
         }
+        if (Input.GetAxis("LT")==0)
+        {
+            PlayerLight.GetComponent<Light>().spotAngle = 40;
+        }
+
 
     }
 
+    
 
-   // bool HitCheck()
-   // {
-   //     RaycastHit hit;
-   //     return Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, 999f, SuckLayer);
 
-   // }
+    // bool HitCheck()
+    // {
+    //     RaycastHit hit;
+    //     return Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, 999f, SuckLayer);
 
-   // 没用的东西
+    // }
+
+    // 没用的东西
 }
