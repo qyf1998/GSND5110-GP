@@ -88,7 +88,7 @@ void Update()
         if (Input.GetButtonUp("RB"))
         {
             lt.color = Color.white;
-            print("回复白色");
+           // print("回复白色");
         }
 
         // mouse left
