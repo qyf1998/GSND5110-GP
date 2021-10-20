@@ -96,13 +96,13 @@ void Update()
         {
                 Vector3 pos = new Vector3(0, 0, 0);
                 pos = HitPoint();
-
+                 print("12");
                 // Ground
                 if (CurrentHit == 10)
                 {
                         if (curTp1)
                                 GameObject.Destroy(curTp1);
-                        curTp1 = GameObject.Instantiate(tp1, pos, Quaternion.Euler(HitVector.x, HitVector.y, HitVector.z));
+                        curTp1 = GameObject.Instantiate(tp1, pos, Quaternion.Euler(HitVector.x, HitVector.y+90, HitVector.z));
                         angleX = Vector3.Angle(cam.transform.forward, curTp1.transform.right);
                         angleY = Vector3.Angle(cam.transform.up, curTp1.transform.up);
                         if (angleX > 90)
@@ -133,7 +133,7 @@ void Update()
                         // curTp1.transform.rotation=(new Vector3(Vector3.Angle(cam.transform.forward, curTp1.transform.up),0,0));
                         angleX = Vector3.Angle(cam.transform.forward, curTp1.transform.right);
                         angleY = Vector3.Angle(cam.transform.up, curTp1.transform.up);
-                        if (angleX > 90)
+                        if (angleX> 90)
                         {
                                 print("反转了");
                                 curTp1.transform.Rotate(new Vector3(0, 180, 0));
@@ -161,13 +161,14 @@ void Update()
 
         if (Input.GetButtonUp("RB")&&!isRed&&canBlue)
         {
-                Vector3 pos = new Vector3(0, 0, 0);
+            print("12");
+            Vector3 pos = new Vector3(0, 0, 0);
                 pos = HitPoint();
                 if (CurrentHit == 10)
                 {
                         if (curTp2)
                                 GameObject.Destroy(curTp2);
-                        curTp2 = GameObject.Instantiate(tp2, pos, Quaternion.Euler(HitVector.x, HitVector.y, HitVector.z));
+                        curTp2 = GameObject.Instantiate(tp2, pos, Quaternion.Euler(HitVector.x, HitVector.y + 90, HitVector.z));
                         angleX = Vector3.Angle(cam.transform.forward, curTp2.transform.right);
                         angleY = Vector3.Angle(cam.transform.up, curTp2.transform.up);
                         if (angleX > 90)

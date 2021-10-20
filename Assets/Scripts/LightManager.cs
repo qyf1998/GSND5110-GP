@@ -16,7 +16,7 @@ public class LightManager : MonoBehaviour
         if (Input.GetButtonUp("Light")) {
             if (lt.intensity == 0)
             {
-                lt.intensity = 2;
+                lt.intensity = 0.5f;
             }
             else {
                 lt.intensity = 0;

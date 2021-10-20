@@ -48,13 +48,13 @@ public class TpOnLeft : MonoBehaviour
 
     void OnTriggerEnter(Collider Col)
     {
-        print("进入2");
-        print("角度之前" + (Col.transform.eulerAngles.y));
+       // print("进入2");
+       // print("角度之前" + (Col.transform.eulerAngles.y));
         Col.gameObject.transform.Rotate(0, 180 + tp2.transform.eulerAngles.y - this.transform.eulerAngles.y, 0);
         Col.transform.position = tp2.transform.position + tp2.transform.right.normalized * -3;
         //print(tp2.transform.right.normalized * 2);
        
-        print("角度之后"+(Col.transform.eulerAngles.y));
+       // print("角度之后"+(Col.transform.eulerAngles.y));
         /*
         Vector3 Vel = Col.GetComponent<Rigidbody>().velocity;
         Vector3 tp1Right = this.transform.right;

@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - destoryable
+  - Door
+  - FlashLight
+  - SuckLight
   layers:
   - Default
   - TransparentFX
@@ -20,7 +23,7 @@ TagManager:
   - Suck
   - Unplacable
   - Break
-  - 
+  - Interactable
   - 
   - 
   - 

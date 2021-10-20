@@ -12,6 +12,7 @@ public class SuckScript : MonoBehaviour
     Vector3 object_pos, cam_pos;
     RaycastHit hit;
     public float speed = 10f;
+    public bool canSuck = false;
 
 
     Rigidbody m_Rigidbody;
@@ -28,7 +29,7 @@ public class SuckScript : MonoBehaviour
     void Update()
     {
         //suck.SetActive(false);
-        if (Input.GetAxis("LT") != 0)
+        if (Input.GetAxis("LT") != 0&canSuck)
         {
             // suck.SetActive(true
             

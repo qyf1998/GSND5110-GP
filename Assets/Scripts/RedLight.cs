@@ -7,12 +7,14 @@ public class RedLight : MonoBehaviour
     public GameObject Player;
     public GameObject placeManager;
     public GameObject playerlight;
-    private void OnTriggerEnter(Collider other)
-    {
-        print(other.gameObject);
-        if (other.gameObject == Player) 
-        {
+    public bool isPicked;
+  
 
+    void Start() {
+        isPicked = false;
+    }
+   void Update() {
+        if (isPicked) {
             playerlight.SetActive(true);
             placeManager.GetComponent<PlaceObjectManager>().canRed = true;
             this.gameObject.SetActive(false);

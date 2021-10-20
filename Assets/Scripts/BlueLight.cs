@@ -6,11 +6,16 @@ public class BlueLight : MonoBehaviour
 {
     public GameObject Player;
     public GameObject placeManager;
-    private void OnTriggerEnter(Collider other)
+    public bool isPicked;
+    void Start()
     {
-      //  print(other.gameObject);
-        if (other.gameObject == Player)
+        isPicked = false;
+    }
+    void Update()
+    {
+        if (isPicked)
         {
+           
             placeManager.GetComponent<PlaceObjectManager>().canBlue = true;
             this.gameObject.SetActive(false);
         }
