@@ -51,7 +51,7 @@ public class TpOnLeft : MonoBehaviour
        // print("进入2");
        // print("角度之前" + (Col.transform.eulerAngles.y));
         Col.gameObject.transform.Rotate(0, 180 + tp2.transform.eulerAngles.y - this.transform.eulerAngles.y, 0);
-        Col.transform.position = tp2.transform.position + tp2.transform.right.normalized * -3;
+        Col.transform.position += tp2.transform.position-this.transform.position + tp2.transform.right.normalized * -3;
         //print(tp2.transform.right.normalized * 2);
        
        // print("角度之后"+(Col.transform.eulerAngles.y));

@@ -85,7 +85,7 @@ public class InteractManager : MonoBehaviour
                 if (hit.collider.gameObject.tag == "FlashLight") {
                     message1.text = "Press";
                     image.sprite = s;
-                    message2.text = "to pick the flashlight";
+                    message2.text = "to pick this bulb";
                     if (Input.GetButtonDown("Interact"))
                     {
 
@@ -107,13 +107,13 @@ public class InteractManager : MonoBehaviour
                 if (hit.collider.gameObject.tag == "SuckLight") {
                     message1.text = "Press";
                     image.sprite = s;
-                    message2.text = "to pick this light bulb";
+                    message2.text = "to pick this bulb";
                     if (Input.GetButtonDown("Interact"))
                     {
 
                         object_pos = hit.collider.gameObject.transform.position;
                         inter_Obj = hit.collider.gameObject;
-
+                        inter_Obj.layer = 1;
                         inter_Obj.GetComponent<suckLightIntro>().l.enabled = false;
                         inter_Obj.GetComponent<suckLightIntro>().l2.enabled = false;
                         inter_Obj.GetComponent<suckLightIntro>().enabled = false;

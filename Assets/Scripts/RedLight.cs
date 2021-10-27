@@ -15,8 +15,9 @@ public class RedLight : MonoBehaviour
     }
    void Update() {
         if (isPicked) {
-            playerlight.SetActive(true);
+           // playerlight.SetActive(true);
             placeManager.GetComponent<PlaceObjectManager>().canRed = true;
+            placeManager.GetComponent<PlaceObjectManager>().canBlue= true;
             this.gameObject.SetActive(false);
         }
     }

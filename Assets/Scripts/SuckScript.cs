@@ -25,8 +25,15 @@ public class SuckScript : MonoBehaviour
 
     }
 
+    private void Update()
+    {
+        if (Input.GetAxis("LT") == 0)
+        {
+            PlayerLight.GetComponent<Light>().spotAngle = 30;
+        }
+    }
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         //suck.SetActive(false);
         if (Input.GetAxis("LT") != 0&canSuck)
@@ -58,7 +65,7 @@ public class SuckScript : MonoBehaviour
         }
         if (Input.GetAxis("LT")==0)
         {
-            PlayerLight.GetComponent<Light>().spotAngle = 40;
+            PlayerLight.GetComponent<Light>().spotAngle = 30;
         }
 
 
