@@ -117,6 +117,7 @@ public class InteractManager : MonoBehaviour
                         inter_Obj.GetComponent<suckLightIntro>().l.enabled = false;
                         inter_Obj.GetComponent<suckLightIntro>().l2.enabled = false;
                         inter_Obj.GetComponent<suckLightIntro>().enabled = false;
+                        print("ø…“‘suck");
                         Player.GetComponent<SuckScript>().canSuck = true;
 
 

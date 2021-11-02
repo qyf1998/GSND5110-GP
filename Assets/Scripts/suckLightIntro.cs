@@ -19,14 +19,14 @@ public class suckLightIntro : MonoBehaviour
 
         if (l.intensity == 5)
         {
-            suck1.GetComponent<Rigidbody>().AddForce((l.gameObject.transform.position - suck1.transform.position) *2);
-            suck2.GetComponent<Rigidbody>().AddForce((l.gameObject.transform.position - suck2.transform.position) * 2);
-            suck3.GetComponent<Rigidbody>().AddForce((l.gameObject.transform.position - suck3.transform.position) * 2);
-            suck4.GetComponent<Rigidbody>().AddForce((l.gameObject.transform.position - suck4.transform.position) * 2);
-            suck5.GetComponent<Rigidbody>().AddForce((l.gameObject.transform.position - suck5.transform.position) * 2);
-            suck6.GetComponent<Rigidbody>().AddForce((l.gameObject.transform.position - suck6.transform.position) * 2);
-            suck7.GetComponent<Rigidbody>().AddForce((l.gameObject.transform.position - suck7.transform.position) * 2);
-            suck8.GetComponent<Rigidbody>().AddForce((l.gameObject.transform.position - suck8.transform.position) * 2);
+            suck1.GetComponent<Rigidbody>().AddForce((l.gameObject.transform.position - suck1.transform.position) *5);
+            suck2.GetComponent<Rigidbody>().AddForce((l.gameObject.transform.position - suck2.transform.position) * 5);
+            suck3.GetComponent<Rigidbody>().AddForce((l.gameObject.transform.position - suck3.transform.position) * 5);
+            suck4.GetComponent<Rigidbody>().AddForce((l.gameObject.transform.position - suck4.transform.position) * 5);
+            suck5.GetComponent<Rigidbody>().AddForce((l.gameObject.transform.position - suck5.transform.position) * 5);
+            suck6.GetComponent<Rigidbody>().AddForce((l.gameObject.transform.position - suck6.transform.position) * 5);
+            suck7.GetComponent<Rigidbody>().AddForce((l.gameObject.transform.position - suck7.transform.position) * 5);
+            suck8.GetComponent<Rigidbody>().AddForce((l.gameObject.transform.position - suck8.transform.position) * 5);
           
           
 
