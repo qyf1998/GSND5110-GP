@@ -327,6 +327,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4132921968797448456}
     m_Modifications:
+    - target: {fileID: 7348716512144249932, guid: 938216f68ae48b64d95e4cc7325f8277,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7348716512144249937, guid: 938216f68ae48b64d95e4cc7325f8277,
         type: 3}
       propertyPath: ShapeModule.radius.value
@@ -420,7 +425,7 @@ PrefabInstance:
     - target: {fileID: 7348716513245159800, guid: 938216f68ae48b64d95e4cc7325f8277,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7348716513245159807, guid: 938216f68ae48b64d95e4cc7325f8277,
         type: 3}
@@ -490,7 +495,7 @@ PrefabInstance:
     - target: {fileID: 7348716513733548532, guid: 938216f68ae48b64d95e4cc7325f8277,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7348716513733548539, guid: 938216f68ae48b64d95e4cc7325f8277,
         type: 3}
@@ -500,7 +505,7 @@ PrefabInstance:
     - target: {fileID: 7348716513848043238, guid: 938216f68ae48b64d95e4cc7325f8277,
         type: 3}
       propertyPath: m_BoundingSphereOverride.w
-      value: -1.0962634e-13
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7348716513848043238, guid: 938216f68ae48b64d95e4cc7325f8277,
         type: 3}
@@ -525,7 +530,7 @@ PrefabInstance:
     - target: {fileID: 7348716513848294439, guid: 938216f68ae48b64d95e4cc7325f8277,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 938216f68ae48b64d95e4cc7325f8277, type: 3}
