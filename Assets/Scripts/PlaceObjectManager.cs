@@ -59,7 +59,7 @@ public int CurrentHit;
 public Light lt; 
 public Vector3 HitVector;
 public float angleX, angleY;
-public bool isRed = true;
+public static bool isRed = true;
 public bool canRed = false;
 public bool canBlue = false;
 // [SerializeField] GameObject PreviewPortalOk;

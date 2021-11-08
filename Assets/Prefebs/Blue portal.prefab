@@ -128,6 +128,8 @@ GameObject:
   - component: {fileID: 4615895765620638928}
   - component: {fileID: 4615895765620638929}
   - component: {fileID: 4615895765620638941}
+  - component: {fileID: 7111141265096534663}
+  - component: {fileID: 4511414198387872433}
   m_Layer: 0
   m_Name: Blue portal
   m_TagString: Untagged
@@ -212,8 +214,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.3768855, y: 1, z: 1}
-  m_Center: {x: -0.002970159, y: 0, z: 0}
+  m_Size: {x: 1.7370168, y: 0.7105821, z: 0.9578913}
+  m_Center: {x: -2.222272, y: 0.011543244, z: -0.0049105682}
 --- !u!114 &4615895765620638941
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -227,6 +229,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tp2: {fileID: 0}
+--- !u!114 &7111141265096534663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4615895765620638934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94c5b5e8cc5461b498318f3111f06a3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!54 &4511414198387872433
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4615895765620638934}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &8582783466037610190
 GameObject:
   m_ObjectHideFlags: 0
