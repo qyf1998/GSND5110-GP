@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 1124358535}
   - component: {fileID: 1124358538}
   - component: {fileID: 1124358537}
-  - component: {fileID: 1124358536}
   - component: {fileID: 5627886218554927939}
   m_Layer: 0
   m_Name: portal background
@@ -83,19 +82,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &1124358536
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1124358534}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!95 &5627886218554927939
 Animator:
   serializedVersion: 3
@@ -305,8 +291,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.6793905, y: 1, z: 1}
-  m_Center: {x: -0.034164608, y: 0, z: 0}
+  m_Size: {x: 1.6793905, y: 0.79, z: 1}
+  m_Center: {x: -1.46, y: 0, z: 0}
 --- !u!114 &4132921968797448457
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -425,7 +411,7 @@ PrefabInstance:
     - target: {fileID: 7348716513245159800, guid: 938216f68ae48b64d95e4cc7325f8277,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7348716513245159807, guid: 938216f68ae48b64d95e4cc7325f8277,
         type: 3}
@@ -495,7 +481,7 @@ PrefabInstance:
     - target: {fileID: 7348716513733548532, guid: 938216f68ae48b64d95e4cc7325f8277,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7348716513733548539, guid: 938216f68ae48b64d95e4cc7325f8277,
         type: 3}
@@ -505,7 +491,7 @@ PrefabInstance:
     - target: {fileID: 7348716513848043238, guid: 938216f68ae48b64d95e4cc7325f8277,
         type: 3}
       propertyPath: m_BoundingSphereOverride.w
-      value: 0
+      value: -3.0293816e-16
       objectReference: {fileID: 0}
     - target: {fileID: 7348716513848043238, guid: 938216f68ae48b64d95e4cc7325f8277,
         type: 3}
@@ -515,12 +501,12 @@ PrefabInstance:
     - target: {fileID: 7348716513848043238, guid: 938216f68ae48b64d95e4cc7325f8277,
         type: 3}
       propertyPath: m_BoundingSphereOverride.y
-      value: 2.3510647e-38
+      value: -1.06150765e-13
       objectReference: {fileID: 0}
     - target: {fileID: 7348716513848043238, guid: 938216f68ae48b64d95e4cc7325f8277,
         type: 3}
       propertyPath: m_BoundingSphereOverride.z
-      value: 0
+      value: 5.14e-43
       objectReference: {fileID: 0}
     - target: {fileID: 7348716513848294438, guid: 938216f68ae48b64d95e4cc7325f8277,
         type: 3}
@@ -530,7 +516,7 @@ PrefabInstance:
     - target: {fileID: 7348716513848294439, guid: 938216f68ae48b64d95e4cc7325f8277,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 938216f68ae48b64d95e4cc7325f8277, type: 3}

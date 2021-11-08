@@ -16,7 +16,7 @@ public class ScareManager : MonoBehaviour
     // Update is called once per frame
     private void OnBecameVisible()
     {
-        print("²¥·Å¶¯»­");
+        // print("ï¿½ï¿½ï¿½Å¶ï¿½ï¿½ï¿½");
         anim.Play("Scare1");
     }
 
