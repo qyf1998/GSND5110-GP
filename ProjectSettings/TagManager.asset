@@ -8,6 +8,7 @@ TagManager:
   - Door
   - FlashLight
   - SuckLight
+  - flashing
   layers:
   - Default
   - TransparentFX
