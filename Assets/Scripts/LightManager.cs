@@ -6,6 +6,7 @@ using UnityEngine;
 public class LightManager : MonoBehaviour
 {
     public Light lt;// Start is called before the first frame update
+    [SerializeField] GameObject lobbyZombie;
     float i = 0;
     void Start()
     {
@@ -25,7 +26,6 @@ public class LightManager : MonoBehaviour
             }
         }
 
-        print(i);
         
     }
 
@@ -35,6 +35,8 @@ public class LightManager : MonoBehaviour
         {
             i = 0.2f;
             StartCoroutine(Flashing());
+            Destroy(other);
+            Destroy(lobbyZombie);
         }
         
     }

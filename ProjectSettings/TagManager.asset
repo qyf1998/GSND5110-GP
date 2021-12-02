@@ -9,6 +9,8 @@ TagManager:
   - FlashLight
   - SuckLight
   - flashing
+  - ID
+  - Book
   layers:
   - Default
   - TransparentFX

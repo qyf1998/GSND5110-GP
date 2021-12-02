@@ -11,7 +11,7 @@ public class StairOverAllTrigger : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         Down.SetActive(true);
-        up.SetActive(true);
+        // up.SetActive(true);
     }
 
 }

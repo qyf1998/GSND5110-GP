@@ -6,12 +6,14 @@ using UnityEngine.UI;
 
 public class InteractManager : MonoBehaviour
 {
-    public GameObject cam, inter_Obj,Player;
+    public GameObject cam, inter_Obj, Player, IDDoor, IDDoor2;
     Vector3 cam_pos, object_pos;
     Animator anim;
-    public Text message1,message2;
+    public Text message1, message2;
     public Image image;
     public Sprite s;
+    public bool hasID = false;
+    [SerializeField] Transform head, theRealPlayer;
     RaycastHit hit;// Start is called before the first frame update
     void Start()
     {
@@ -21,11 +23,18 @@ public class InteractManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-            cam_pos = cam.transform.position;
+        print("hasID" + hasID);
+
+        if (hasID)
+        {
+            head.LookAt(theRealPlayer);
+            head.transform.Rotate(new Vector3(0, -90, -90));
+        }
+        cam_pos = cam.transform.position;
         if (Physics.Raycast(cam_pos, cam.transform.forward, out hit, 5f))
         {
-            
-            Debug.DrawRay(cam_pos, hit.point-cam_pos, Color.red);
+
+            Debug.DrawRay(cam_pos, hit.point - cam_pos, Color.red);
 
             if (hit.collider.gameObject.layer == 14)
             {
@@ -82,7 +91,8 @@ public class InteractManager : MonoBehaviour
 
                     }
                 }
-                if (hit.collider.gameObject.tag == "FlashLight") {
+                if (hit.collider.gameObject.tag == "FlashLight")
+                {
                     message1.text = "Press";
                     image.sprite = s;
                     message2.text = "to pick portal bulb";
@@ -95,16 +105,45 @@ public class InteractManager : MonoBehaviour
                         {
                             inter_Obj.GetComponent<RedLight>().isPicked = true;
                         }
-                        else if (inter_Obj.GetComponent<BlueLight>()) {
+                        else if (inter_Obj.GetComponent<BlueLight>())
+                        {
                             inter_Obj.GetComponent<BlueLight>().isPicked = true;
                         }
-                        
+
 
 
 
                     }
                 }
-                if (hit.collider.gameObject.tag == "SuckLight") {
+
+                if (hit.collider.gameObject.tag == "ID")
+                {
+                    message1.text = "Press";
+                    image.sprite = s;
+                    message2.text = "to pick ID card";
+                    if (Input.GetButtonDown("Interact"))
+                    {
+                        inter_Obj = hit.collider.gameObject;
+                        hasID = true;
+                        IDDoor.GetComponent<DoorManager>().needKey = false;
+                        IDDoor.GetComponent<DoorManager>().canOpen = true;
+                        IDDoor2.GetComponent<DoorManager>().needKey = false;
+                        IDDoor2.GetComponent<DoorManager>().canOpen = true;
+                        Destroy(inter_Obj);
+
+
+                    }
+                }
+                if (hit.collider.gameObject.tag == "Book")
+                {
+                    message1.text = "Where is the ID card?";
+                    image.sprite = null ;
+                    message2.text = "try the other room";
+                   
+                }
+
+                if (hit.collider.gameObject.tag == "SuckLight")
+                {
                     message1.text = "Press";
                     image.sprite = s;
                     message2.text = "to pick abosorb bulb";
@@ -127,12 +166,13 @@ public class InteractManager : MonoBehaviour
                 }
 
             }
-            else {
+            else
+            {
                 message1.gameObject.SetActive(false);
                 message2.gameObject.SetActive(false);
                 image.gameObject.SetActive(false);
             }
-           
+
         }
         else
         {
