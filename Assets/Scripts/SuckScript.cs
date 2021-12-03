@@ -58,9 +58,16 @@ public class SuckScript : MonoBehaviour
                 hit.collider.gameObject.GetComponent<Rigidbody>().AddForce((cam_pos- object_pos)*10);
 
 
+
                //print("object postion is :  " + object_pos);
                //print("camera postion is :  " + cam_pos);
                //print("-------------------------------------------------");
+            }
+
+            GameObject hint = hit.transform.Find("SuckHint").gameObject;
+            if (hint != null)
+            {
+                Destroy(hint);
             }
         }
         if (Input.GetAxis("LT")==0)

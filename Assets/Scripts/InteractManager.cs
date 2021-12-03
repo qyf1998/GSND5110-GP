@@ -11,9 +11,13 @@ public class InteractManager : MonoBehaviour
     Animator anim;
     public Text message1, message2;
     public Image image;
-    public Sprite s;
+    public Sprite s, n;
     public bool hasID = false;
-    [SerializeField] Transform head, theRealPlayer;
+    [SerializeField] Transform head, theRealPlayer, playerView;
+    [SerializeField] GameObject suckTutorial;
+    [SerializeField] GameObject portalTutorial;
+    
+
     RaycastHit hit;// Start is called before the first frame update
     void Start()
     {
@@ -87,6 +91,12 @@ public class InteractManager : MonoBehaviour
                             }
                         }
 
+                        GameObject hint = inter_Obj.transform.Find("Hint").gameObject;
+                        if (hint != null && inter_Obj.GetComponent<DoorManager>().canOpen)
+                        {
+                            Destroy(hint);
+                        }
+
 
 
                     }
@@ -109,9 +119,7 @@ public class InteractManager : MonoBehaviour
                         {
                             inter_Obj.GetComponent<BlueLight>().isPicked = true;
                         }
-
-
-
+                        StartCoroutine(ShowPortalTutorial());
 
                     }
                 }
@@ -131,15 +139,21 @@ public class InteractManager : MonoBehaviour
                         IDDoor2.GetComponent<DoorManager>().canOpen = true;
                         Destroy(inter_Obj);
 
+                        StartCoroutine(lookAtZombie());
+                        
+                        
+
 
                     }
                 }
                 if (hit.collider.gameObject.tag == "Book")
                 {
-                    message1.text = "Where is the ID card?";
-                    image.sprite = null ;
-                    message2.text = "try the other room";
+                    message1.text = "May the Light Fills";
+                    image.enabled = false;
+                    message2.text = "You With Determination";
                    
+                } else{
+                    image.enabled = true;
                 }
 
                 if (hit.collider.gameObject.tag == "SuckLight")
@@ -156,10 +170,10 @@ public class InteractManager : MonoBehaviour
                         inter_Obj.GetComponent<suckLightIntro>().l.enabled = false;
                         inter_Obj.GetComponent<suckLightIntro>().l2.enabled = false;
                         inter_Obj.GetComponent<suckLightIntro>().enabled = false;
-                        print("¿ÉÒÔsuck");
+                        //print("ï¿½ï¿½ï¿½ï¿½suck");
                         Player.GetComponent<SuckScript>().canSuck = true;
-
-
+                        Destroy(inter_Obj);
+                        StartCoroutine(ShowSuckTutorial());
 
 
                     }
@@ -185,4 +199,40 @@ public class InteractManager : MonoBehaviour
 
 
     }
+
+    IEnumerator ShowSuckTutorial()
+    {
+        suckTutorial.SetActive(true);
+        yield return new WaitForSeconds(8f);
+        suckTutorial.SetActive(false);
+    }
+
+    IEnumerator ShowPortalTutorial()
+    {
+        portalTutorial.SetActive(true);
+        yield return new WaitForSeconds(8f);
+        portalTutorial.SetActive(false);
+    }
+
+    IEnumerator lookAtZombie()
+    {   
+        Debug.Log("triggered");
+        StartCoroutine(StartCoroutineIE(2f));
+        yield return new WaitForSeconds(2f);
+        Vector3  _direction = (head.position - theRealPlayer.position).normalized;
+        theRealPlayer.transform.rotation = Quaternion.LookRotation(new Vector3(_direction.x, 0 ,_direction.z));
+        playerView.transform.rotation = Quaternion.LookRotation(new Vector3(-50, 0, 0));
+    }
+
+
+    IEnumerator StartCoroutineIE(float i)
+    {
+        while (i > 0)
+        {
+            playerView.LookAt(head);
+            yield return null;
+            i -= Time.deltaTime;
+        }
+    }
+
 }

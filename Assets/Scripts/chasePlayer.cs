@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,8 +9,8 @@ using UnityStandardAssets.Characters.FirstPerson;
 public class chasePlayer : MonoBehaviour
 {
     public int moveSpeed = 4;
-    public int runSpeed = 5;//¹ÖÎïÒÆ¶¯ËÙ¶È
-    public int rotationSpeed = 5;//¹ÖÎï×ªÉíËÙ¶È
+    public int runSpeed = 5;//ï¿½ï¿½ï¿½ï¿½ï¿½Æ¶ï¿½ï¿½Ù¶ï¿½
+    public int rotationSpeed = 5;//ï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½ï¿½Ù¶ï¿½
     public Vector3 velocity = Vector3.zero;
     public bool showed = false;
     public bool Killed = false;
@@ -24,15 +25,15 @@ public class chasePlayer : MonoBehaviour
     private bool IsWalk = false;
     private bool IsRun = false;
     private bool IsAttack = false;
-    private Transform target;//Ä¿±êÍæ¼Ò
+    private Transform target;//Ä¿ï¿½ï¿½ï¿½ï¿½ï¿½
     private Transform myTransform;
     private Vector3 Last;//
     private Ray ray;
     private RaycastHit hitinfo;
     private Vector3 targetPosition;
-    //Ä¿±êÍæ¼ÒµÄ×ø±ê
+    //Ä¿ï¿½ï¿½ï¿½ï¿½Òµï¿½ï¿½ï¿½ï¿½ï¿½
     private float maxDistance;
-    private NavMeshAgent navMeshAgent;//Íæ¼Ò¸ú¹ÖÎï¼äµÄ¾àÀë
+    private NavMeshAgent navMeshAgent;//ï¿½ï¿½Ò¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¾ï¿½ï¿½ï¿½
 
     void Awake()
     {
@@ -40,7 +41,7 @@ public class chasePlayer : MonoBehaviour
         myTransform = transform;
 
 
-        //µ±Ç°¹ÖÎïµÄtransform¸¶¸ømyTransform
+        //ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½transformï¿½ï¿½ï¿½ï¿½myTransform
 
     }
 
@@ -49,58 +50,59 @@ public class chasePlayer : MonoBehaviour
         hitinfo = new RaycastHit();
         music = gameObject.AddComponent<AudioSource>();
         navMeshAgent = GetComponent<NavMeshAgent>();
-        //ÉèÖÃ²»Ò»¿ªÊ¼¾Í²¥·ÅÒôÐ§
+        //ï¿½ï¿½ï¿½Ã²ï¿½Ò»ï¿½ï¿½Ê¼ï¿½Í²ï¿½ï¿½ï¿½ï¿½ï¿½Ð§
         music.playOnAwake = false;
-        //¼ÓÔØÒôÐ§ÎÄ¼þ£¬ÎÒ°ÑÌøÔ¾µÄÒôÆµÎÄ¼þÃüÃûÎªjump
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð§ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½Ò°ï¿½ï¿½ï¿½Ô¾ï¿½ï¿½ï¿½ï¿½Æµï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½Îªjump
         GateAnimator = gameObject.GetComponent<Animator>();
-        GameObject player = GameObject.FindGameObjectWithTag("Player");//ÕÒµ½tagÎªplayerµÄ¶ÔÏó
+        GameObject player = GameObject.FindGameObjectWithTag("Player");//ï¿½Òµï¿½tagÎªplayerï¿½Ä¶ï¿½ï¿½ï¿½
         target = player.transform;
         Last = myTransform.transform.position;
-        //¶¨Òåplayer¾ÍÊÇÄ¿±êÍæ¼Ò
+        //ï¿½ï¿½ï¿½ï¿½playerï¿½ï¿½ï¿½ï¿½Ä¿ï¿½ï¿½ï¿½ï¿½ï¿½
 
     }
 
     void Update()
     {
+        updateAnimator();
 
-        GameObject player = GameObject.FindGameObjectWithTag("Player");//ÕÒµ½tagÎªplayerµÄ¶ÔÏó
+        GameObject player = GameObject.FindGameObjectWithTag("Player");//ï¿½Òµï¿½tagÎªplayerï¿½Ä¶ï¿½ï¿½ï¿½
         target = player.transform;
         if (IsVisible())
         {
 
             Last = player.transform.position;
-            targetPosition = new Vector3(target.position.x, target.position.y, target.position.z);//µÃµ½¹ÖÎï½ÅÏÂxz×ø±ê
+            targetPosition = new Vector3(target.position.x, target.position.y, target.position.z);//ï¿½Ãµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½xzï¿½ï¿½ï¿½ï¿½
             Debug.DrawLine(target.position, myTransform.position, Color.green);
-            //¶¨Òåplayer¾ÍÊÇÄ¿±êÍæ¼Ò
+            //ï¿½ï¿½ï¿½ï¿½playerï¿½ï¿½ï¿½ï¿½Ä¿ï¿½ï¿½ï¿½ï¿½ï¿½
         }
         if (!IsVisible())
         {
             // Debug.Log(Last.position.x);
-            targetPosition = new Vector3(Last.x, Last.y, Last.z);//µÃµ½¹ÖÎï½ÅÏÂxz×ø±ê
+            targetPosition = new Vector3(Last.x, Last.y, Last.z);//ï¿½Ãµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½xzï¿½ï¿½ï¿½ï¿½
             Debug.DrawLine(Last, myTransform.position, Color.red);
         }
 
         ray = new Ray(myTransform.position + new Vector3(0, 0.5f, 0), target.position - myTransform.position);
 
 
-        // myTransform.rotation = Quaternion.Slerp(myTransform.rotation, Quaternion.LookRotation(targetPosition - myTransform.position), rotationSpeed * Time.deltaTime);//¹ÒÎï×ªÉí³¯ÏòÍæ¼Ò
+        // myTransform.rotation = Quaternion.Slerp(myTransform.rotation, Quaternion.LookRotation(targetPosition - myTransform.position), rotationSpeed * Time.deltaTime);//ï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
-        //ÉèÖÃ¹ÖÎïÏëÍæ¼ÒÒÆ¶¯
-        maxDistance = Vector3.Distance(target.position, myTransform.position);//»ñÈ¡Íæ¼ÒÓë¹ÖÎïÖ®¼äµÄ¾àÀë
+        //ï¿½ï¿½ï¿½Ã¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¶ï¿½
+        maxDistance = Vector3.Distance(target.position, myTransform.position);//ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö®ï¿½ï¿½Ä¾ï¿½ï¿½ï¿½
         if (maxDistance >= 2 && IsVisible())
         {
-            //µ±¾àÀë´óÓÚÁ½Ã×Ê±ÒÆ¶¯
+            //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½Æ¶ï¿½
             RunMethod();
-            //ÈÃ¹ÖÎï³¯×Å×Ô¼ºµÄÕýÃæÒÆ¶¯
+            //ï¿½Ã¹ï¿½ï¿½ï³¯ï¿½ï¿½ï¿½Ô¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¶ï¿½
         }
         else if (maxDistance < 2 && IsVisible())
         {
             AttackMethod();
-            //Debug.Log("Ì«½üÁË");//µ±¾àÀëÐ¡ÓÚÁ½Ã×Ê±µÄ¶¯×÷
+            //Debug.Log("Ì«ï¿½ï¿½ï¿½ï¿½");//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½Ä¶ï¿½ï¿½ï¿½
         }
         else if (maxDistance >= 2 && !IsVisible())
         {
-            // Debug.Log("¿´²»¼û");//µ±¾àÀëÐ¡ÓÚÁ½Ã×Ê±µÄ¶¯×÷
+            // Debug.Log("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½Ä¶ï¿½ï¿½ï¿½
             WalkMethod();
 
         }
@@ -109,8 +111,16 @@ public class chasePlayer : MonoBehaviour
             // StopMethod();
         }
 
-        // Debug.Log("¾àÀëÎª£º"+maxDistance);
+        // Debug.Log("ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½"+maxDistance);
     }
+
+    private void updateAnimator()
+    {
+        Vector3 velocity = GetComponent<NavMeshAgent>().velocity;
+        Vector3 localVelocity = transform.InverseTransformDirection(velocity);
+        float speed = localVelocity.z;
+        GetComponent<Animator>().SetFloat("forwardSpeed", speed);
+        }
 
     bool IsVisible()
     {
@@ -144,7 +154,7 @@ public class chasePlayer : MonoBehaviour
         // myTransform.position += myTransform.forward * moveSpeed * Time.deltaTime;
         GetComponent<NavMeshAgent>().destination = targetPosition;
         //Debug.Log("Walking");
-        //²¥·ÅÒôÐ§
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð§
         //music.clip = walk;
         // music.Play();
         // music.pitch = 1.1f;
@@ -180,7 +190,7 @@ public class chasePlayer : MonoBehaviour
         GateAnimator.SetBool("canattack", false);
         GateAnimator.SetBool("canrun", false);
         // music.clip = idle;
-        //²¥·ÅÒôÐ§
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð§
         // music.Play();
         // music.pitch = 1.1f;
 
@@ -195,7 +205,7 @@ public class chasePlayer : MonoBehaviour
         GateAnimator.SetBool("canstand", false);
         GateAnimator.SetBool("canrun", false);
         //music.clip = attack;
-        //²¥·ÅÒôÐ§
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð§
         // music.Play();
         // music.pitch = 1.1f;
 
@@ -216,7 +226,7 @@ public class chasePlayer : MonoBehaviour
         if (AttackTime % 50 == 0 && AttackTime < 150)
         {
             music.clip = attack;
-            //²¥·ÅÒôÐ§
+            //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð§
             music.Play();
         }
 
@@ -224,7 +234,7 @@ public class chasePlayer : MonoBehaviour
         {
             GameObject.Find("FPSController").GetComponent<FirstPersonController>().enabled = false;
             music.clip = dead;
-            //²¥·ÅÒôÐ§
+            //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð§
             music.Play();
             Killed = true;
             Timer.t = 0;
