@@ -13,6 +13,8 @@ public class ActiveScare : MonoBehaviour
             if (scare) {
                 print("gui2");
                 scare.SetActive(true);
+                if(GetComponent<AudioSource>())
+                GetComponent<AudioSource>().Play();
             }
             
         }

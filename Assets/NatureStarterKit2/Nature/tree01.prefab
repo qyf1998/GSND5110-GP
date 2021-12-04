@@ -381,7 +381,7 @@ MonoBehaviour:
   m_Name: Tree Data
   m_EditorClassIdentifier: 
   _uniqueID: 1635
-  materialHash: e5457a4680f2b8f38339d6f7d60ec9db215482368
+  materialHash: 0702728bb45a0c1a8fa5e28ffff6205c215482368
   root:
     _uniqueID: 1
     seed: 1234
@@ -474,7 +474,7 @@ MonoBehaviour:
     nodeIDs: 02000000
     parentGroupID: -1
     childGroupIDs: 03000000
-    adaptiveLODQuality: 1
+    adaptiveLODQuality: 20
     shadowTextureQuality: 3
     enableWelding: 1
     enableAmbientOcclusion: 1

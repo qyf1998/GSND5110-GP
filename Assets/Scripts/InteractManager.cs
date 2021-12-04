@@ -137,6 +137,7 @@ public class InteractManager : MonoBehaviour
                         IDDoor.GetComponent<DoorManager>().canOpen = true;
                         IDDoor2.GetComponent<DoorManager>().needKey = false;
                         IDDoor2.GetComponent<DoorManager>().canOpen = true;
+                        this.GetComponent<AudioSource>().Play();
                         Destroy(inter_Obj);
 
                         StartCoroutine(lookAtZombie());
@@ -221,6 +222,7 @@ public class InteractManager : MonoBehaviour
         yield return new WaitForSeconds(2f);
         Vector3  _direction = (head.position - theRealPlayer.position).normalized;
         theRealPlayer.transform.rotation = Quaternion.LookRotation(new Vector3(_direction.x, 0 ,_direction.z));
+       
         playerView.transform.rotation = Quaternion.LookRotation(new Vector3(-50, 0, 0));
     }
 
