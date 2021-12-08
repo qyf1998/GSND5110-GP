@@ -55,7 +55,7 @@ public class InteractManager : MonoBehaviour
                     {
                         message1.text = "";
                         image.color = Color.grey;
-                        message2.text = "Stucked";
+                        message2.text = "Stuck";
                     }
                     else if (hit.collider.gameObject.GetComponent<DoorManager>().needKey)
                     {
@@ -103,9 +103,9 @@ public class InteractManager : MonoBehaviour
                 }
                 if (hit.collider.gameObject.tag == "FlashLight")
                 {
-                    message1.text = "Press";
+                    message1.text = "Press ";
                     image.sprite = s;
-                    message2.text = "to pick portal bulb";
+                    message2.text = " to pick up portal bulb";
                     if (Input.GetButtonDown("Interact"))
                     {
 
@@ -126,9 +126,9 @@ public class InteractManager : MonoBehaviour
 
                 if (hit.collider.gameObject.tag == "ID")
                 {
-                    message1.text = "Press";
+                    message1.text = "Press ";
                     image.sprite = s;
-                    message2.text = "to pick ID card";
+                    message2.text = " to pick up ID card";
                     if (Input.GetButtonDown("Interact"))
                     {
                         inter_Obj = hit.collider.gameObject;
@@ -149,9 +149,9 @@ public class InteractManager : MonoBehaviour
                 }
                 if (hit.collider.gameObject.tag == "Book")
                 {
-                    message1.text = "May the Light Fills";
+                    message1.text = "Dark are the secrets...";
                     image.enabled = false;
-                    message2.text = "You With Determination";
+                    message2.text = "and Light is your way.";
                    
                 } else{
                     image.enabled = true;
@@ -159,9 +159,9 @@ public class InteractManager : MonoBehaviour
 
                 if (hit.collider.gameObject.tag == "SuckLight")
                 {
-                    message1.text = "Press";
+                    message1.text = "Press ";
                     image.sprite = s;
-                    message2.text = "to pick abosorb bulb";
+                    message2.text = " to pick up suction bulb";
                     if (Input.GetButtonDown("Interact"))
                     {
 
