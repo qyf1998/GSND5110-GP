@@ -7,10 +7,14 @@ public class StairTpDown : MonoBehaviour
 
     public Transform target;
     // Start is called before the first frame update
+
+    [SerializeField] Transform player;
    
 
     void OnTriggerEnter(Collider col)
    {
-       col.transform.position = target.position;
+       if (col.tag == "Player") {
+           player.transform.position = target.position;
+       }
    }
 }
