@@ -51,8 +51,8 @@ public class PlaceObjectManager : MonoBehaviour
 {
 // Start is called before the first frame update
 public GameObject cam;
-public GameObject tp1, tp2;
-public GameObject curTp1, curTp2;
+public GameObject tp1, tp2, tp3;
+public GameObject curTp1, curTp2, curTp3;
 public LayerMask GroundLayer;
 public LayerMask WallLayer;
 public int CurrentHit;
@@ -177,6 +177,28 @@ void Update()
                         }
                         // curTp1.transform.position = pos + new Vector3(0, 3, 0);
                 }
+            // enemy wall
+                if (CurrentHit == 15)
+                {
+                    Debug.Log("place tp3");
+                    if (curTp3)
+                        GameObject.Destroy(curTp3);
+                    curTp3 = GameObject.Instantiate(tp3, pos, Quaternion.Euler(HitVector.x, HitVector.y + 90, HitVector.z));
+                    angleX = Vector3.Angle(cam.transform.forward, curTp3.transform.right);
+                    angleY = Vector3.Angle(cam.transform.up, curTp3.transform.up);
+                    if (angleX > 90)
+                    {
+                        print("反转了");
+                        curTp3.transform.Rotate(new Vector3(0, 180, 0));
+                    }
+                    if (angleY > 90)
+                    {
+                        print("反转上下");
+                        curTp3.transform.Rotate(new Vector3(180, 0, 0));
+                    }
+
+                    // curTp1.transform.position = pos + new Vector3(0, 3, 0);
+                }
             isRed = false;
             if (canRed && !canBlue)
             {
@@ -247,6 +269,31 @@ void Update()
 
             }
 
+            // enemy wall
+            if (CurrentHit == 15)
+            {
+                Debug.Log("place tp3");
+                if (curTp3)
+                    GameObject.Destroy(curTp3);
+                curTp3 = GameObject.Instantiate(tp3, pos, Quaternion.Euler(HitVector.x, HitVector.y + 90, HitVector.z));
+                angleX = Vector3.Angle(cam.transform.forward, curTp3.transform.right);
+                angleY = Vector3.Angle(cam.transform.up, curTp3.transform.up);
+                if (angleX > 90)
+                {
+                    print("反转了");
+                    curTp3.transform.Rotate(new Vector3(0, 180, 0));
+                }
+                if (angleY > 90)
+                {
+                    print("反转上下");
+                    curTp3.transform.Rotate(new Vector3(180, 0, 0));
+                }
+
+
+                //curTp2.transform.position = pos + new Vector3(0, 3, 0);
+
+            }
+
 
             // if (CurrentHit == 9)
             // {
@@ -290,6 +337,10 @@ void Update()
         else if (hit.collider.gameObject.layer == 9)
         {
                 CurrentHit = 9;
+        }
+        else if (hit.collider.gameObject.layer == 15)
+        {
+            CurrentHit = 15;
         }
         else
         {

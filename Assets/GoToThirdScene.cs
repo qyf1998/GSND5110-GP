@@ -29,6 +29,6 @@ public class GoToThirdScene : MonoBehaviour
     {
         yield return new WaitForSeconds(3f);
         print("change scene!!!");
-        //SceneManager.LoadScene();
+        SceneManager.LoadScene(2);
     }
 }
