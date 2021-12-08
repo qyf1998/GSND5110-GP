@@ -51,14 +51,15 @@ public class PlaceObjectManager : MonoBehaviour
 {
 // Start is called before the first frame update
 public GameObject cam;
-public GameObject tp1, tp2, tp3;
-public GameObject curTp1, curTp2, curTp3;
+public GameObject tp1, tp2, tp3,Enemy;
+public GameObject curTp1, curTp2, curTp3,enemy;
 public LayerMask GroundLayer;
 public LayerMask WallLayer;
 public int CurrentHit;
 public Light lt; 
 public Vector3 HitVector;
 public float angleX, angleY;
+public AudioSource AS;
 public static bool isRed = true;
 public bool canRed = false;
 public bool canBlue = false;
@@ -158,6 +159,7 @@ void Update()
                         if (curTp1)
                         GameObject.Destroy(curTp1);
                         curTp1 = GameObject.Instantiate(tp1, pos, Quaternion.Euler(HitVector.x, HitVector.y + 90, HitVector.z));
+                       
                         angleX = Vector3.Angle(cam.transform.forward, curTp1.transform.right);
                         angleY = Vector3.Angle(cam.transform.up, curTp1.transform.up);
                         if (angleX > 90)
@@ -184,18 +186,23 @@ void Update()
                     if (curTp3)
                         GameObject.Destroy(curTp3);
                     curTp3 = GameObject.Instantiate(tp3, pos, Quaternion.Euler(HitVector.x, HitVector.y + 90, HitVector.z));
-                    angleX = Vector3.Angle(cam.transform.forward, curTp3.transform.right);
+                    enemy = GameObject.Instantiate(Enemy, pos, Quaternion.Euler(HitVector.x, HitVector.y, HitVector.z));
+                enemy.transform.position -= enemy.transform.forward.normalized * 3;
+                angleX = Vector3.Angle(cam.transform.forward, curTp3.transform.right);
                     angleY = Vector3.Angle(cam.transform.up, curTp3.transform.up);
                     if (angleX > 90)
                     {
                         print("反转了");
                         curTp3.transform.Rotate(new Vector3(0, 180, 0));
-                    }
+                       enemy.transform.Rotate(new Vector3(0, 180, 0));
+                }
                     if (angleY > 90)
                     {
                         print("反转上下");
                         curTp3.transform.Rotate(new Vector3(180, 0, 0));
-                    }
+                        enemy.transform.Rotate(new Vector3(180, 0, 0));
+
+                }
 
                     // curTp1.transform.position = pos + new Vector3(0, 3, 0);
                 }
@@ -275,18 +282,22 @@ void Update()
                 Debug.Log("place tp3");
                 if (curTp3)
                     GameObject.Destroy(curTp3);
-                curTp3 = GameObject.Instantiate(tp3, pos, Quaternion.Euler(HitVector.x, HitVector.y + 90, HitVector.z));
+                curTp3 = GameObject.Instantiate(tp3, pos, Quaternion.Euler(HitVector.x, HitVector.y+90, HitVector.z));
+                enemy = GameObject.Instantiate(Enemy, pos, Quaternion.Euler(HitVector.x, HitVector.y, HitVector.z));
+                enemy.transform.position -= enemy.transform.forward.normalized * 3;
                 angleX = Vector3.Angle(cam.transform.forward, curTp3.transform.right);
                 angleY = Vector3.Angle(cam.transform.up, curTp3.transform.up);
                 if (angleX > 90)
                 {
                     print("反转了");
                     curTp3.transform.Rotate(new Vector3(0, 180, 0));
+                    enemy.transform.Rotate(new Vector3(0, 180, 0));
                 }
                 if (angleY > 90)
                 {
                     print("反转上下");
                     curTp3.transform.Rotate(new Vector3(180, 0, 0));
+                    enemy.transform.Rotate(new Vector3(180, 0, 0));
                 }
 
 

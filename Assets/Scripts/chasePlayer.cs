@@ -14,6 +14,7 @@ public class chasePlayer : MonoBehaviour
     public Vector3 velocity = Vector3.zero;
     public bool showed = false;
     public bool Killed = false;
+    public GameObject endPanal;
     public static int AttackTime = 0;
     public static bool vis = true;
     public AudioSource music;
@@ -140,6 +141,14 @@ public class chasePlayer : MonoBehaviour
 
         if (Physics.Raycast(ray, out hitinfo, 1000) && hitinfo.transform.tag != "Player")
         {
+
+            if (hitinfo.transform.gameObject.layer == 15)
+            {
+                vis = true;
+                //Debug.Log("'000000000'");
+                return true;
+
+            }
             vis = false;
             Debug.Log("'11111111'");
             Debug.Log(Physics.Raycast(ray, out hitinfo, 1000));
@@ -242,15 +251,16 @@ public class chasePlayer : MonoBehaviour
         {
             GameObject.Find("FPSController").GetComponent<FirstPersonController>().enabled = false;
             music.clip = dead;
+           
             //������Ч
             music.Play();
             Killed = true;
             Timer.t = 0;
         }
 
-        if (Killed && Timer.t == 100)
+        if (Killed && AttackTime >= 250)
         {
-            SceneManager.LoadScene(0);
+           // SceneManager.LoadScene(0);
         }
     }
 
