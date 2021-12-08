@@ -72,7 +72,7 @@ public class chasePlayer : MonoBehaviour
 
             Last = player.transform.position;
             targetPosition = new Vector3(target.position.x, target.position.y, target.position.z);//�õ��������xz����
-            Debug.DrawLine(target.position, myTransform.position, Color.green);
+            //Debug.DrawLine(target.position, myTransform.position, Color.green);
             //����player����Ŀ�����
         }
         if (!IsVisible())
@@ -82,8 +82,8 @@ public class chasePlayer : MonoBehaviour
             Debug.DrawLine(Last, myTransform.position, Color.red);
         }
 
-        ray = new Ray(myTransform.position + new Vector3(0, 0.5f, 0), target.position - myTransform.position);
-
+        ray = new Ray(myTransform.position + new Vector3(0, 2f, 0), target.position - myTransform.position);
+        Debug.DrawRay(myTransform.position + new Vector3(0, 2f, 0), target.position - myTransform.position, Color.green);
 
         // myTransform.rotation = Quaternion.Slerp(myTransform.rotation, Quaternion.LookRotation(targetPosition - myTransform.position), rotationSpeed * Time.deltaTime);//����ת���������
 
@@ -130,16 +130,24 @@ public class chasePlayer : MonoBehaviour
         if (Physics.Raycast(ray, out hitinfo, 1000) && hitinfo.transform.tag == "Player")
         {
             vis = true;
+            Debug.Log("'000000000'");
             return true;
+            
 
         }
+
+        
+
         if (Physics.Raycast(ray, out hitinfo, 1000) && hitinfo.transform.tag != "Player")
         {
             vis = false;
-            //Debug.Log(hitinfo.transform.tag);
+            Debug.Log("'11111111'");
+            Debug.Log(Physics.Raycast(ray, out hitinfo, 1000));
+            Debug.Log(hitinfo.transform.name);
             return false;
 
         }
+        Debug.Log("'22222222'");
 
         return false;
     }

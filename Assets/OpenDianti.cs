@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class OpenDianti : MonoBehaviour
 {
+    [SerializeField] GameObject indicator;
     public GameObject dianti;// Start is called before the first frame update
     void Start()
     {
@@ -15,5 +16,6 @@ public class OpenDianti : MonoBehaviour
         dianti.GetComponent<AudioSource>().enabled = true;
         this.gameObject.GetComponent<BoxCollider>().enabled = false;
         this.gameObject.GetComponent<AudioSource>().Play();
+        indicator.SetActive(true);
     }
 }
